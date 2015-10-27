@@ -1,0 +1,19 @@
+.success {
+  color:green;
+  border: 2px solid green;
+  border-color green;
+}
+
+.success:focus{
+  border-color:green;
+}
+
+.fail {
+  color: red;
+  border: 2px solid red;
+  border-color:red;
+}
+
+.fail:focus{
+  border-color: red;
+}
