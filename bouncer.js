@@ -9,26 +9,8 @@
 //letters_only
 
 $(document).ready(function(){
-
-  var validation_array = [
-    {
-      input_id: 'password',
-      min_length:3,
-      max_length: 6,
-      capital_letters: true
-    },
-    {
-      input_id: 'username',
-      min_length:6,
-      max_length: 15,
-      user_name_check: true,
-    },
-    {
-      input_id: 'name',
-      min_length:2,
-      letters_only: true
-    }
-  ];
+  //ADD INPUT FIELD OBJECTS HERE IF YOU WANT THEM TO BE CHECKED 
+  var validation_array = [];
 
   // LISTENS FOR ANY CHANGES MADE TO ANY INPUT FIELD
   $('input').keyup(function(){
