@@ -1,10 +1,12 @@
 //input_id
+//max_length
 //min_length
 //capital_letters
 //has_numbers
 //email
-//min_length
 //no_numbers
+//user_name_check
+//letters_only
 
 $(document).ready(function(){
 
@@ -14,17 +16,18 @@ $(document).ready(function(){
       min_length:3,
       max_length: 6,
       capital_letters: true
-
     },
     {
       input_id: 'username',
       min_length:6,
       max_length: 15,
-      capital_letters: true,
-      has_numbers: true
-
+      user_name_check: true,
+    },
+    {
+      input_id: 'name',
+      min_length:2,
+      letters_only: true
     }
-
   ];
 
   // LISTENS FOR ANY CHANGES MADE TO ANY INPUT FIELD
@@ -36,10 +39,7 @@ $(document).ready(function(){
     var check_array = [];
     for(var i = 0; i < validation_array.length; i++){
 
-
       if(id == validation_array[i]['input_id']){
-
-
         // CHECK FOR EMAIL
         if(validation_array[i]['email'] == true){
             var regEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -107,8 +107,28 @@ $(document).ready(function(){
           }
         }
 
+        //MAKES STANDARD CHECK OF USERNAME FIED
+        if(validation_array[i]['user_name_check'] == true){
+          var word = $(this).val();
+          var check = user_name_validate(word);
+          if(check == true){
+            check_array.push('success');
+          }else{
+            check_array.push('fail');
+          }
+        }
 
-        console.log(check_array);
+        //STRING CAN ONLY BE LETTERS
+        if(validation_array[i]['letters_only'] == true){
+          var word = $(this).val();
+          var check = letters_only_check(word);
+          if(check == true){
+            check_array.push('success');
+          }else {
+            check_array.push('fail');
+          }
+        }
+
         // SEARCHING THROUGH THE CHECK ARRAY TO SEE IF THERE WERE ANY ERRORS
         for(var i = 0; i < check_array.length;i++){
           if(check_array[i] == 'fail'){
@@ -116,21 +136,12 @@ $(document).ready(function(){
             return;
           }
         }
-
         // THIS WILL ONLY BE HIT IF THE CHECK_ARRAY DOESNT CONTAIN ANY FALSE STRINGS
         success($(this));
         return;
-
       }
-
-
     }
-
   })
-
-
-
-
 });
 
 
@@ -155,31 +166,33 @@ function hasLowerCase(str) {
 
 function hasNumbers(str) {
   var array = str.split('');
-  // for(var i = 0; i < array.length; i++){
-  //   if(parseInt(array[i]) != NaN){
-  //     return false;
-  //   }
-  // }
-    console.log('answer',str.match(/[0-9]/i))
   if(!str.match(/[0-9]/i)){
     return true;
   }
   return false;
-
 }
 
 function noNumbers(str) {
   var array = str.split('');
-  // for(var i = 0; i < array.length; i++){
-  //   if(parseInt(array[i]) != NaN){
-  //     return false;
-  //   }
-  // }
-    console.log('answer',str.match(/[0-9]/i))
   if(!str.match(/[0-9]/i)){
     return true;
   }
   return false;
+}
+
+function user_name_validate(str){
+  if(!/[^a-zA-Z0-9_]/.test(str)) {
+    return true;
+  }else{
+    return false;
+  }
+}
 
 
+function letters_only_check(str){
+  if(!/[^a-zA-Z]/.test(str)) {
+    return true;
+  }else{
+    return false;
+  }
 }
