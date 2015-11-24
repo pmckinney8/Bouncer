@@ -1,7 +1,8 @@
 //input_id
 //max_length
 //min_length
-//capital_letters
+//require_capital_letters
+//require_
 //has_numbers
 //email
 //no_numbers
@@ -9,8 +10,12 @@
 //letters_only
 
 $(document).ready(function(){
-  //ADD INPUT FIELD OBJECTS HERE IF YOU WANT THEM TO BE CHECKED 
-  var validation_array = [];
+  //ADD INPUT FIELD OBJECTS HERE IF YOU WANT THEM TO BE CHECKED
+  var validation_array = [{
+    'input_id':'password',
+    'max_length': 5,
+    'require_capital_letters': true
+  }];
 
   // LISTENS FOR ANY CHANGES MADE TO ANY INPUT FIELD
   $('input').keyup(function(){
@@ -55,7 +60,7 @@ $(document).ready(function(){
         }
 
         // MUST HAVE CAPITAL LETTER CHECK
-        if(validation_array[i]['capital_letters'] == true){
+        if(validation_array[i]['require_capital_letters'] == true){
           var word = $(this).val();
           var capitals = hasLowerCase(word);
           if(capitals == true){
