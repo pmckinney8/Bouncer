@@ -11,11 +11,7 @@
 
 $(document).ready(function(){
   //ADD INPUT FIELD OBJECTS HERE IF YOU WANT THEM TO BE CHECKED
-  var validation_array = [{
-    'input_id':'password',
-    'max_length': 5,
-    'require_capital_letters': true
-  }];
+  var validation_array = [];
 
   // LISTENS FOR ANY CHANGES MADE TO ANY INPUT FIELD
   $('input').keyup(function(){
