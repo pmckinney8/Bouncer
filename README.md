@@ -21,16 +21,39 @@ After linking the HTML page to the bouncer.js and bouncer.css file we need to lo
 
 ```javascript
 validation_array = [
-  {'input_id': 'password',
-    'max_length': 15,
-    'min_length': 8,
-    'capital_letters':true
+  {input_id: 'password',
+    max_length: 15,
+    min_length: 8,
+    capital_letters:true,
+    has_numbers:true
   }
 ]
 
 ```
 
 The validation object above would be connected to an input field that had the id of 'password'. After setting the input_id (Which is required) we set three different validation checks that we want for our password input field and voila.. we're done. Now if you go to your form and start typing in the password field you should see the colors change according to status of the validation checks being true or false.Look below to checkout out all of the validation checks that bouncer.js makes available to you. 
+
+Here is another example of the validation_array being populated with objects to check particular input fields.
+
+```javascript
+validation_array = [
+   {input_id: 'email' 
+   },
+    {input_id: 'username',
+      min_length:6,
+      max_length: 15,
+      user_name_check: true,
+      has_numbers: true
+  },
+    {input_id: 'name',
+      letters_only: true,
+      min_length:2,
+      max_length: 20,
+  }
+]
+
+```
+Helpful Tip: When validating an input field for an email all you have to do is give that input field an id of 'email' and then create an object with one key value pair "{input_id: 'email'}". After doing this, bouncer will have automatically run a regular expression to make sure the the format of the email is correct. 
 
 ###Bouncer Validation Checks:
 
