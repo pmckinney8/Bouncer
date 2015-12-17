@@ -4,51 +4,127 @@
     <meta charset="utf-8">
     <title>registration example</title>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="bouncer.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <link href="bouncer.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- bouncer links -->
+    <script src="bouncer.js"></script>
+    <link href="bouncer.css" rel="stylesheet">
   </head>
   <body>
+
+
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#">Bouncer.js</a>
+         </div>
+
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav navbar-right">
+             <li><a href="https://github.com/pmckinney8/Bouncer" target="_blank"><i class="fa fa-github fa-lg"></i> View On Github</a></li>
+           </ul>
+         </div><!-- /.navbar-collapse -->
+       </div><!-- /.container-fluid -->
+     </nav>
+
     <div class='container'>
-      <div class='col-md-4'>
-    <form role="form">
-      <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" id="email">
-      </div>
-      <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="password">
+
+     <div class='col-md-5'>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+         <h3 class="panel-title">Registration Form Example</h3>
+        </div>
+        <div class="panel-body">
+         <form role="form">
+          <div class="form-group">
+           <label for="email">Email address:</label>
+           <input type="email" class="form-control" id="email">
+          </div>
+
+          <div class="form-group">
+           <label for="first_name">First Name:</label>
+           <input type="text" class="form-control" id="first_name">
+          </div>
+
+          <div class="form-group">
+           <label for="last_name">Last Name:</label>
+           <input type="text" class="form-control" id="last_name">
+          </div>
+
+          <div class="form-group">
+           <label for="username">Username:</label>
+           <input type="text" class="form-control" id="username">
+          </div>
+
+          <div class="form-group">
+           <label for="pwd">Password:</label>
+           <input type="password" class="form-control" id="password">
+          </div>
+
+          <button type="submit" class="btn btn-default">Register</button>
+         </form>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name">
+     </div>
+
+
+
+     <div class='col-md-5 col-md-offset-1'>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+         <h3 class="panel-title">Input Field Validation Checks</h3>
+        </div>
+        <div class="panel-body">
+         <p><b>Email</b></p>
+         <ul>
+          <li>Checks if the format is correct</li>
+         </ul>
+
+         <p><b>First/Last Name</b></p>
+         <ul>
+          <li>Minimum length of 2 characters</li>
+          <li>Only letters are allowed</li>
+         </ul>
+
+         <p><b>Username</b></p>
+         <ul>
+          <li>Minimum length of 6 characters</li>
+          <li>Maximum length of 12 characters</li>
+          <li>No special characters</li>
+          <li>Must contain atleast one number</li>
+         </ul>
+
+         <p><b>Password</b></p>
+         <ul>
+          <li>Minimum length of 8 characters</li>
+          <li>Maximum length of 15 characters</li>
+          <li>Must have atleast one Uppercase letter</li>
+          <li>Must contain atleast one number</li>
+         </ul>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="username">username:</label>
-        <input type="text" class="form-control" id="username">
-      </div>
-
-      <div class="form-group">
-        <label for="nickname">nick name:</label>
-        <input type="text" class="form-control" id="nickname">
-      </div>
-
-      <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div>
-</div>
+     </div>
+    </div>
   </body>
 </html>
