@@ -89,7 +89,7 @@ $(document).ready(function(){
           }
         }
 
-        //MAKES STANDARD CHECK OF USERNAME FIED
+        //NO SPECIAL CHARACTERS CHECK
         if(validation_array[i]['no_special_characters'] == true){
           var word = $(this).val();
           var check = no_special_characters_validate(word);

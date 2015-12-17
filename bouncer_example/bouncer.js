@@ -8,6 +8,8 @@
 // no_special_characters = input field cannot contain any special characters
 // letters_only = input field can only contain letters
 
+
+
 $(document).ready(function(){
 
   var validation_array = [
@@ -117,7 +119,7 @@ $(document).ready(function(){
           }
         }
 
-        //MAKES STANDARD CHECK OF USERNAME FIED
+        //NO SPECIAL CHARACTERS CHECK
         if(validation_array[i]['no_special_characters'] == true){
           var word = $(this).val();
           var check = no_special_characters_validate(word);
