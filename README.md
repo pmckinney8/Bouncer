@@ -42,7 +42,7 @@ validation_array = [
     {input_id: 'username',
       min_length:6,
       max_length: 15,
-      user_name_check: true,
+      no_special_characters: true,
       has_numbers: true
   },
     {input_id: 'name',
@@ -65,7 +65,7 @@ Helpful Tip: When validating an input field for an email all you have to do is g
 <li>has_numbers: true (boolean)</li>
 <li>email: 'just enter (input_id: email) and bouncer will automatically check if its a valid email'</li>
 <li>no_numbers:true (boolean)</li>
-<li>user_name_check:true (boolean)</li>
+<li>no_special_characters:true (boolean)</li>
 <li>letters_only:true (boolean)</li>
 </ul>
 
