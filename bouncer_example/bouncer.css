@@ -1,7 +1,7 @@
 .success {
   color:green;
   border: 2px solid green;
-  border-color green;
+  border-color: green;
 }
 
 .success:focus{
