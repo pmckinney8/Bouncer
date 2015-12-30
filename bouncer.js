@@ -9,8 +9,6 @@
 //user_name_check
 //letters_only
 
-///added validation////
-
 //credit_card
 //no_letters
 (function(global, $){
@@ -121,12 +119,20 @@
       //determine if it's valid
       return (sum % 10 == 0);
   }
+  var validationFunction = function(check_array){
+      for(var i = 0; i < check_array.length;i++){
+        if(check_array[i] == 'fail'){
+          return false;
+        }
+      }
+  }
 
   Bouncer.prototype = {
     validate: function(){
       //ADD INPUT FIELD OBJECTS HERE IF YOU WANT THEM TO BE CHECKED
+      var self = this
       var validation_array = this.validation_array
-
+      var check_array = this.check_array
       // LISTENS FOR ANY CHANGES MADE TO ANY INPUT FIELD
       $('.bouncer').keyup(function(){
       // GRABS THE ID OF THE INPUT FIELD THAT WAS TRIGGERED
@@ -246,7 +252,7 @@
                 check_array.push('fail');
               }
             }
-
+            self.check_array = check_array
             // SEARCHING THROUGH THE CHECK ARRAY TO SEE IF THERE WERE ANY ERRORS
             for(var i = 0; i < check_array.length;i++){
               if(check_array[i] == 'fail'){
@@ -260,12 +266,32 @@
           }
         }
       })
+    }, 
+    stopSubmit: function(){
+      console.log('hide button')
+      var check_array = this.check_array
+      var self = this;
+      console.log(check_array)
+      $(window).keydown(function(event){
+        if( (event.keyCode == 13) && (validationFunction(self.check_array) == false) ) {
+          event.preventDefault();
+          return false;
+        }
+      })
+      $('#submit_button').keydown(function(event){
+        if(validationFunction(self.check_array) == false) {
+          event.preventDefault();
+          return false;
+        }
+      })
+      return this;
     }
   };
 
   Bouncer.init = function(validation_array) {
     var self = this;
     self.validation_array = validation_array;
+    self.check_array = [];
   }
   
   Bouncer.init.prototype = Bouncer.prototype;
