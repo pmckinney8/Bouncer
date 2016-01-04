@@ -18,12 +18,12 @@
     return new Bouncer.init(validation_array);
   }
 
-  function fail($obj) {
+  var fail = function($obj) {
     $obj.removeClass('success');
     $obj.addClass('fail');
   }
 
-  function success($obj) {
+  var success = function($obj) {
     $obj.removeClass('fail');
     $obj.addClass('success');
   }
