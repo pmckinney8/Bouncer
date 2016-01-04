@@ -18,12 +18,12 @@
     return new Bouncer.init(validation_array);
   }
 
-  var fail = function($obj) {
+  function fail($obj) {
     $obj.removeClass('success');
     $obj.addClass('fail');
   }
 
-  var success = function($obj) {
+  function success($obj) {
     $obj.removeClass('fail');
     $obj.addClass('success');
   }
@@ -127,6 +127,14 @@
       }
   }
 
+   var no_special_characters_validate = function(str){
+    if(!/[^a-zA-Z0-9_]/.test(str)) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   Bouncer.prototype = {
     validate: function(){
       //ADD INPUT FIELD OBJECTS HERE IF YOU WANT THEM TO BE CHECKED
@@ -191,6 +199,17 @@
               var word = $(this).val();
               var capitals = hasLowerCase(word);
               if(capitals == true){
+                check_array.push('success');
+              }else{
+                check_array.push('fail');
+              }
+            }
+            
+            //NO SPECIAL CHARACTERS CHECK
+            if(validation_array[i]['no_special_characters'] == true){
+              var word = $(this).val();
+              var check = no_special_characters_validate(word);
+              if(check == true){
                 check_array.push('success');
               }else{
                 check_array.push('fail');
@@ -272,13 +291,15 @@
       var check_array = this.check_array
       var self = this;
       console.log(check_array)
+      console.log('going in here')
       $(window).keydown(function(event){
         if( (event.keyCode == 13) && (validationFunction(self.check_array) == false) ) {
           event.preventDefault();
+          console.log('going in here as well')
           return false;
         }
       })
-      $('#submit_button').keydown(function(event){
+      $('#submit_form').submit(function(event){
         if(validationFunction(self.check_array) == false) {
           event.preventDefault();
           return false;
