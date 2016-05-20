@@ -36,6 +36,19 @@
       return false;
   }
 
+  var validDate = function(text){
+    var comp = text.split('-');
+    var y = parseInt(comp[0], 10);
+    var m = parseInt(comp[1], 10);
+    var d = parseInt(comp[2], 10);
+    var date = new Date(y,m-1,d);
+    if (date.getFullYear() == y && date.getMonth() == m - 1 && date.getDate() == d) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   var hasNumbers = function(str) {
     var array = str.split('');
     if(!str.match(/[0-9]/i)){
@@ -176,6 +189,7 @@
 
             // MIN LENGTH CHECK
             if(validation_array[i]['min_length']){
+              console.log('checking min length');
               var word = $(this).val();
               if(word.length < validation_array[i]['min_length']){
                 check_array.push('fail');
@@ -204,7 +218,7 @@
                 check_array.push('fail');
               }
             }
-            
+
             //NO SPECIAL CHARACTERS CHECK
             if(validation_array[i]['no_special_characters'] == true){
               var word = $(this).val();
@@ -286,26 +300,29 @@
         }
       })
     }, 
-    stopSubmit: function(){
-      console.log('hide button')
+    stopSubmit: function(object){
       var check_array = this.check_array
       var self = this;
-      console.log(check_array)
-      console.log('going in here')
       $(window).keydown(function(event){
         if( (event.keyCode == 13) && (validationFunction(self.check_array) == false) ) {
           event.preventDefault();
-          console.log('going in here as well')
           return false;
         }
       })
-      $('#submit_form').submit(function(event){
+      $('#' + object.form_id).submit(function(event){
         if(validationFunction(self.check_array) == false) {
           event.preventDefault();
           return false;
         }
       })
       return this;
+    },
+    isValid: function(){
+      if(validationFunction(this.check_array) == false){
+        return false;
+      } else {
+        return true;
+      }
     }
   };
 
@@ -313,6 +330,7 @@
     var self = this;
     self.validation_array = validation_array;
     self.check_array = [];
+    self.validate();
   }
   
   Bouncer.init.prototype = Bouncer.prototype;
