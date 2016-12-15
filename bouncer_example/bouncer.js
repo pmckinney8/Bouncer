@@ -52,6 +52,7 @@ $(document).ready(function(){
     for(var i = 0; i < validation_array.length; i++){
 
       if(id == validation_array[i]['input_id']){
+
         // CHECK FOR EMAIL
         if(validation_array[i]['input_id'] == 'email'){
             var regEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -154,6 +155,9 @@ $(document).ready(function(){
       }
     }
   })
+
+
+
 });
 
 
@@ -208,3 +212,7 @@ $(document).ready(function(){
       return false;
     }
 }
+
+
+console.log(Object.keys(window).length)
+console.log(window)
